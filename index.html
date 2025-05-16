@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub IssueとPull Requestの基本</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <div class="container">
+            <h1><i class="fab fa-github"></i> GitHub入門</h1>
+            <nav>
+                <ul>
+                    <li><a href="#goal">目標・目的</a></li>
+                    <li><a href="#issue">Issue</a></li>
+                    <li><a href="#branch">ブランチ</a></li>  <!-- 追加 -->
+                    <li><a href="#pr">Pull Request</a></li>
+                    <li><a href="#merge">Merge</a></li>
+                    <li><a href="#practice">実践</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main>
+        <!-- 目標・目的セクション -->
+        <section id="goal" class="section">
+            <div class="container">
+                <h2><i class="fas fa-bullseye"></i> 目標・目的</h2>
+                <div class="content-box">
+                    <p>このサイトでは、チーム開発で必要不可欠なGitHubの「Issue」と「Pull Request」の使い方を学びます。</p>
+                    <p>実際に手を動かしながら学ぶことで、チーム開発の基本スキルを身につけることができます。</p>
+                    <p>このテキストはGitHubのアカウントとVSCodeがインストールされていることを前提とされています。また初心者向けに説明していますが、一部はGitHubとVScodeを触ったことがある人向けの内容になっています。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Issueとは -->
+        <section id="issue" class="section">
+            <div class="container">
+                <h2><i class="fas fa-tasks"></i> Issueとは</h2>
+                <div class="content-box">
+                    <h3>Issueの定義</h3>
+                    <p>Issueとは、プロジェクトの課題や改善提案を記録・管理・提案するための機能です。「チームの連絡ノート」のようなものと考えましょう。</p>
+                    
+                    <h3>具体的な使用場面</h3>
+                    <ul>
+                        <li><i class="fas fa-bug"></i> バグ報告：プログラムの不具合を報告する</li>
+                        <li><i class="fas fa-lightbulb"></i> 機能提案：新しい機能のアイデアを共有する</li>
+                        <li><i class="fas fa-question-circle"></i> 質問：分からないことを質問する</li>
+                        <li><i class="fas fa-clipboard-list"></i> タスク管理：やるべきことをリスト化する</li>
+                    </ul>
+
+                    <h3>書き方のポイント</h3>
+                    <div class="point-box importance-section">
+                        <h4>1. タイトルは具体的に</h4>
+                        <p>悪い例：「バグがある」</p>
+                        <p>良い例：「ログインボタンをクリックしても反応しない」</p>
+                        <div class="importance-note">
+                            <h5><i class="fas fa-exclamation-circle"></i> なぜ重要か：</h5>
+                            <ul>
+                                <li class="risk">問題点：曖昧なタイトルだと、同じ問題が重複して報告される</li>
+                                <li class="risk">問題点：チーム全員が内容を確認する必要があり、時間のロスが発生</li>
+                                <li class="benefit">利点：具体的なタイトルで素早く問題を特定でき、対応の優先順位も決めやすい</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="point-box importance-section">
+                        <h4>2. 内容は箇条書きで整理</h4>
+                        <div class="importance-note">
+                            <h5><i class="fas fa-exclamation-circle"></i> なぜ重要か：</h5>
+                            <ul>
+                                <li class="risk">問題点：文章が長くなると重要な情報を見落としやすい</li>
+                                <li class="risk">問題点：再現手順が不明確だと、解決に時間がかかる</li>
+                                <li class="benefit">利点：必要な情報が整理され、素早く問題解決につながる</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 例の追加 -->
+                    <div class="example-box">
+                        <h3><i class="fas fa-lightbulb"></i> Issue作成例</h3>
+                        
+                        <div class="issue-example">
+                            <h4>タイトル：ログインボタンが機能しない</h4>
+                            
+                            <div class="issue-content">
+                                <h5>概要</h5>
+                                <p>ログインページのログインボタンをクリックしても反応がなく、ログインできない状態です。</p>
+                                
+                                <h5>再現手順</h5>
+                                <ol>
+                                    <li>ログインページ（/login）にアクセス</li>
+                                    <li>メールアドレスとパスワードを入力</li>
+                                    <li>「ログイン」ボタンをクリック</li>
+                                    <li>→ボタンクリックしても何も起こらない</li>
+                                </ol>
+                                
+                                <h5>期待する動作</h5>
+                                <p>ログインボタンをクリックすると、入力された認証情報でログイン処理が実行され、成功時にはマイページに遷移する。</p>
+                                
+                                <h5>環境</h5>
+                                <ul>
+                                    <li>OS: Windows 11</li>
+                                    <li>ブラウザ: Chrome 121.0.6167.160</li>
+                                    <li>画面サイズ: 1920×1080</li>
+                                </ul>
+                                
+                                <div class="issue-labels">
+                                    <span class="label bug">バグ</span>
+                                    <span class="label priority-high">優先度：高</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="issue-example">
+                            <h4>タイトル：ダークモード機能の追加提案</h4>
+                            
+                            <div class="issue-content">
+                                <h5>概要</h5>
+                                <p>ユーザーからの要望も多く、長時間の作業でも目が疲れにくいダークモードの実装を提案します。</p>
+                                
+                                <h5>提案内容</h5>
+                                <ul>
+                                    <li>ヘッダーにダークモード切り替えボタンを追加</li>
+                                    <li>全ページで適用できるようにする</li>
+                                    <li>ユーザー設定に保存機能を追加</li>
+                                </ul>
+                                
+                                <h5>期待される効果</h5>
+                                <ul>
+                                    <li>ユーザーの目の疲労軽減</li>
+                                    <li>バッテリー消費の削減（有機ELディスプレイの場合）</li>
+                                    <li>ユーザー体験の向上</li>
+                                </ul>
+                                
+                                <div class="issue-labels">
+                                    <span class="label enhancement">機能改善</span>
+                                    <span class="label priority-medium">優先度：中</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Issue番号の確認方法</h3>
+                    <p>Issueを作成すると、自動的に番号（#1, #2など）が付きます。この番号は後でPRと紐づける時に使うので確認しておいてください。</p>
+                    <div class="image-space">ここにIssue番号の画像を入れます</div>
+
+                    <!-- Issue番号の確認方法の前に追加 -->
+                    <div class="info-box">
+                        <h3><i class="fas fa-info-circle"></i> Issueを閉じる（Close）とは</h3>
+                        <p>Issueには「Open（開いている）」と「Closed（閉じている）」の2つの状態があります。</p>
+                        
+                        <div class="state-explanation">
+                            <div class="state open">
+                                <h4><i class="fas fa-exclamation-circle"></i> Open（開いている）状態</h4>
+                                <ul>
+                                    <li>まだ解決していない問題</li>
+                                    <li>対応が必要なタスク</li>
+                                    <li>実装待ちの機能提案</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="state closed">
+                                <h4><i class="fas fa-check-circle"></i> Closed（閉じている）状態</h4>
+                                <ul>
+                                    <li>解決済みの問題</li>
+                                    <li>完了したタスク</li>
+                                    <li>実装完了した機能</li>
+                                    <li>却下された提案</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="close-methods">
+                            <h4><i class="fas fa-lightbulb"></i> Issueが閉じられる主な方法</h4>
+                            <ol>
+                                <li>
+                                    <strong>手動で閉じる：</strong>
+                                    <p>「Close issue」ボタンをクリックして手動で閉じる</p>
+                                </li>
+                                <li>
+                                    <strong>PRとの紐付けによる自動クローズ：</strong>
+                                    <p>PRの説明に「closes #1」「fixes #1」などと書いておくと、そのPRがマージされた時に自動的に閉じられる</p>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Tips：</strong> 閉じられたIssueも後から再開（Reopen）できます。例えば、バグが再発した場合などに活用できます。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ブランチセクション -->
+        <section id="branch" class="section">
+            <div class="container">
+                <h2><i class="fas fa-code-branch"></i> ブランチとは</h2>
+                <div class="content-box">
+                    <h3>ブランチの定義</h3>
+                    <p>ブランチとは、メインのコードから分岐した「作業用の枝」のようなものです。この枝で安全に新機能の開発やバグ修正を行うことができます。</p>
+
+                    <div class="branch-visual">
+                        <h4><i class="fas fa-tree"></i> ブランチを木に例えると...</h4>
+                        <div class="tree-example">
+                            <div class="main-branch">
+                                <p><strong>main（幹）</strong></p>
+                                <ul>
+                                    <li>プロジェクトの中心となる部分</li>
+                                    <li>動作が保証された完成形のコード</li>
+                                    <li>本番環境で使用されるコード</li>
+                                </ul>
+                            </div>
+                            <div class="feature-branches">
+                                <p><strong>feature branches（枝）</strong></p>
+                                <ul>
+                                    <li>新機能開発用の作業スペース</li>
+                                    <li>バグ修正用の作業場所</li>
+                                    <li>実験的な変更を試す場所</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4><i class="fas fa-shield-alt"></i> mainブランチの保護</h4>
+                        <p>多くのプロジェクトでは、mainブランチは「保護」されています。</p>
+                        
+                        <div class="protection-explanation">
+                            <h5>なぜmainブランチに直接pushできないのか：</h5>
+                            <ul class="risk-list">
+                                <li>未テストのコードが本番環境に入るのを防ぐため</li>
+                                <li>誤った変更による障害を防ぐため</li>
+                                <li>コードレビューを確実に行うため</li>
+                            </ul>
+
+                            <div class="correct-flow">
+                                <h5><i class="fas fa-code-branch"></i> 正しい作業の流れ（実践の章で詳しく説明）</h5>
+                                <div class="workflow-steps">
+                                    <div class="workflow-step">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">
+                                            <h6>作業用ブランチを作成</h6>
+                                            <div class="code-mini">
+                                                <code style="background-color: #f6f8fa;">git checkout -b feature/new-branch</code>
+                                            </div>
+                                            <p class="step-description">メインブランチから新しいブランチを作成して、作業場所を確保します</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="workflow-step">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">
+                                            <h6>変更を加える</h6>
+                                            <div class="step-icons">
+                                                <i class="fas fa-code"></i>
+                                                <i class="fas fa-arrow-right"></i>
+                                                <i class="fas fa-save"></i>
+                                            </div>
+                                            <p class="step-description">作成したブランチ上で必要な変更を行います</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="workflow-step">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">
+                                            <h6>Pull Requestを作成</h6>
+                                            <div class="step-icons">
+                                                <i class="fas fa-code-pull-request"></i>
+                                            </div>
+                                            <p class="step-description">変更内容をチームに提案し、レビューを依頼します</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="workflow-step">
+                                        <div class="step-number">4</div>
+                                        <div class="step-content">
+                                            <h6>レビュー後、mainブランチにマージ</h6>
+                                            <div class="step-icons">
+                                                <i class="fas fa-check-circle"></i>
+                                                <i class="fas fa-arrow-right"></i>
+                                                <i class="fas fa-code-merge"></i>
+                                            </div>
+                                            <p class="step-description">承認された変更を本流に統合します</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <h3>ブランチの使用例</h3>
+                        <div class="branch-example">
+                            <h4>例：ログインボタンのバグ修正</h4>
+                            <div class="branch-flow">
+                                <div class="branch-step">
+                                    <p><strong>1. ブランチ作成</strong></p>
+                                    <div class="code-example">
+                                        <code>git checkout -b fix-login-button</code>
+                                    </div>
+                                </div>
+                                <div class="branch-step">
+                                    <p><strong>2. 変更を加える</strong></p>
+                                    <p>バグの修正作業を実施</p>
+                                </div>
+                                <div class="branch-step">
+                                    <p><strong>3. 変更をコミット</strong></p>
+                                    <div class="code-example">
+                                        <code>git commit -m "Fix login button not responding"</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="naming-convention">
+                        <h3>ブランチの命名規則</h3>
+                        <div class="point-box">
+                            <h4>推奨される命名パターン</h4>
+                            <ul >
+                                <li><code style="background-color: #f6f8fa;">feature/add-dark-mode</code> - 新機能追加</li>
+                                <li><code style="background-color: #f6f8fa;">fix/login-button</code> - バグ修正</li>
+                                <li><code style="background-color: #f6f8fa;">docs/update-readme</code> - ドキュメント更新</li>
+                                <li><code style="background-color: #f6f8fa;">refactor/clean-css</code> - コードの整理</li>
+                            </ul>
+                            <div class="importance-note">
+                                <h5><i class="fas fa-exclamation-circle"></i> なぜ重要か</h5>
+                                <ul>
+                                    <li class="benefit">作業の目的が一目で分かる</li>
+                                    <li class="benefit">チーム内での共通認識が持ちやすい</li>
+                                    <li class="risk">命名が不適切だと作業内容の把握に時間がかかる</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pull Requestとは -->
+        <section id="pr" class="section">
+            <div class="container">
+                <h2><i class="fas fa-code-branch"></i> Pull Requestとは</h2>
+                <div class="content-box">
+                    <h3>Pull Requestの定義</h3>
+                    <p>Pull Request（PR）は、「自分が書いたコードをチームに変更の提案する手紙」のようなものです。レビューしてもらい、メインのコード（実際のプロジェクト）に組み込んでもらうための機能です。</p>
+                    
+                    <h3>使用場面</h3>
+                    <ul>
+                        <li><i class="fas fa-plus-circle"></i> 新機能の追加</li>
+                        <li><i class="fas fa-wrench"></i> バグの修正</li>
+                        <li><i class="fas fa-file-alt"></i> ドキュメントの更新</li>
+                        <li><i class="fas fa-paint-brush"></i> デザインの変更</li>
+                    </ul>
+
+                    <h3>書き方のポイント</h3>
+                    <div class="point-box importance-section">
+                        <h4>1. 関連するIssue番号を記載</h4>
+                        <p>例：「Issue #3 を修正しました」</p>
+                        <div class="importance-note">
+                            <h5><i class="fas fa-exclamation-circle"></i> なぜ重要か：</h5>
+                            <ul>
+                                <li class="risk">問題点：紐付けがないと、どの課題に対する修正か不明確になる</li>
+                                <li class="risk">問題点：Issue が自動で Close されず、管理が煩雑になる</li>
+                                <li class="benefit">利点：修正履歴が追跡しやすく、変更の背景が明確になる</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="point-box importance-section">
+                        <h4>2. 変更理由を明確に</h4>
+                        <div class="importance-note">
+                            <h5><i class="fas fa-exclamation-circle"></i> なぜ重要か：</h5>
+                            <ul>
+                                <li class="risk">問題点：理由が不明確だと、レビュアーが意図を理解できない</li>
+                                <li class="risk">問題点：将来的にコードの変更理由が分からなくなる</li>
+                                <li class="benefit">利点：レビューがスムーズになり、承認までの時間が短縮される</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="point-box">
+                        <h4>3. 影響範囲を記載</h4>
+                        <p>どのファイル・機能に影響があるかを説明する</p>
+                    </div>
+
+                    <h3>Issueとの紐づけ方</h3>
+                    <p>PRの説明欄に「close #番号」「fix #番号」と書くと、PRがマージされた時に自動的にIssueが閉じられます。</p>
+                    <div class="code-example">
+                        <code>
+fix #3<br>
+ログインボタンのバグを修正しました。<br>
+イベントリスナーが正しく設定されていなかった問題を解決しました。
+                        </code>
+                    </div>
+
+                    <h3>PR番号の確認方法</h3>
+                    <p>PRを作成すると、Issueと同様に番号が付きます。レビューやマージの際にこの番号を使います。</p>
+                    <div class="image-space">ここにPR番号の画像を入れます</div>
+
+                    <h3>Pull Requestの例</h3>
+                    <div class="example-box">
+                        <div class="pr-example">
+                            <h4>タイトル：ログインボタンの修正 #3</h4>
+                            
+                            <div class="pr-content">
+                                <h5>概要</h5>
+                                <p>Issue #3 で報告されたログインボタンの問題を修正しました。</p>
+                                
+                                <h5>変更内容</h5>
+                                <ul>
+                                    <li>login.js にイベントリスナーを追加</li>
+                                    <li>ボタンのクリックイベントを正しく処理するように修正</li>
+                                    <li>エラー処理を追加</li>
+                                </ul>
+                                
+                                <h5>影響範囲</h5>
+                                <ul>
+                                    <li>ログインページのみに影響</li>
+                                    <li>他の機能への影響なし</li>
+                                </ul>
+                                
+                                <h5>テスト結果</h5>
+                                <ul>
+                                    <li>✅ ログインボタンクリックでフォームが送信される</li>
+                                    <li>✅ バリデーションが正しく機能</li>
+                                    <li>✅ エラー時のフィードバックが表示される</li>
+                                </ul>
+
+                                <div class="code-diff">
+                                    <code>
+                                        <span class="diff-add">+ loginButton.addEventListener('click', handleLogin);</span><br>
+                                        <span class="diff-add">+ function handleLogin(event) {</span><br>
+                                        <span class="diff-add">+     event.preventDefault();</span><br>
+                                        <span class="diff-add">+     // ログイン処理</span><br>
+                                        <span class="diff-add">+ }</span><br>
+                                        <span class="diff-remove">- // TODO: ログイン処理を実装</span>
+                                    </code>
+                                </div>
+
+                                <h5>関連Issue</h5>
+                                <p>Closes #3</p>
+                                
+                                <div class="pr-labels">
+                                    <span class="label bug">バグ修正</span>
+                                    <span class="label reviewed">レビュー待ち</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pr-example">
+                            <h4>タイトル：ダークモードの実装 #5</h4>
+                            
+                            <div class="pr-content">
+                                <h5>概要</h5>
+                                <p>Issue #5 の提案に基づき、ダークモード機能を実装しました。</p>
+                                
+                                <h5>追加した機能</h5>
+                                <ul>
+                                    <li>ヘッダーに切り替えボタンを追加</li>
+                                    <li>ダークモード用のCSSクラスとスタイルを追加</li>
+                                    <li>ローカルストレージを使用した設定の保存機能</li>
+                                </ul>
+                                
+                                <h5>変更したファイル</h5>
+                                <ul>
+                                    <li>index.html - ボタンの追加</li>
+                                    <li>styles.css - ダークモード用スタイル追加</li>
+                                    <li>script.js - 切り替え機能の実装</li>
+                                </ul>
+
+                                <h5>関連Issue</h5>
+                                <p>Closes #5</p>
+                                
+                                <br>
+                                
+                                <h5>スクリーンショット</h5>
+                                <div class="image-space">
+                                    ここにダークモードのビフォー/アフター画像
+                                </div>
+                                
+                                <div class="pr-labels">
+                                    <span class="label enhancement">機能追加</span>
+                                    <span class="label in-progress">作業中</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mergeとは -->
+        <section id="merge" class="section">
+            <div class="container">
+                <h2><i class="fas fa-code-merge"></i> Mergeとは</h2>
+                <div class="content-box">
+                    <h3>Mergeの定義</h3>
+                    <p>Mergeは、ブランチ（開発の枝分かれ）を合流させることです。PRで提案した変更をメイン（実際のプロジェクト）のコードに組み込む作業です。</p>
+                    
+                    <h3>使用時の注意点</h3>
+                    <div class="warning-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> 競合（コンフリクト）とは</h4>
+                        <div class="conflict-explanation">
+                            <p class="conflict-intro">複数の人が同じファイルの同じ場所を別々に変更した時に発生する問題です。</p>
+                            
+                            <div class="conflict-example">
+                                <h5><i class="fas fa-code"></i> 具体例：</h5>
+                                <div class="">
+                                    <pre><code style="background-color: #f6f8fa;"><span class="main-code">// mainブランチの元のコード
+const buttonColor = "green";</span>
+
+<span class="comment">// AさんとBさんが同時に変更を加えた場合...</span>
+<span class="conflict-marker">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
+<span class="branch-a">const buttonColor = "red";    // Aさんの変更</span>
+<span class="conflict-marker">=======</span>
+<span class="branch-b">const buttonColor = "blue";   // Bさんの変更</span>
+<span class="conflict-marker">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/change-color</span></code></pre>
+                                </div>
+                            </div>
+
+                            <div class="resolution-steps">
+                                <h5><i class="fas fa-sync"></i> 1. 最新のmainブランチを取得</h5>
+                                <div class="code-example">
+                                    <pre><code># mainブランチに移動して最新化
+git checkout main
+git pull origin main
+
+# 作業ブランチに戻る
+git checkout fix-issue-1
+
+# mainの内容を作業ブランチに取り込む
+git merge main</code></pre>
+                                </div>
+
+                                <h5><i class="fas fa-edit"></i> 2. コンフリクトの解決</h5>
+                                <p>VSCodeのマージエディタを使用して解決します：</p>
+                                <ul>
+                                    <li>赤色の部分: 現在のブランチの内容（あなたの変更）</li>
+                                    <li>緑色の部分: 取り込もうとしている内容（mainブランチの変更）</li>
+                                    <li>「Accept Current」「Accept Incoming」「Accept Both」から適切な方を選択</li>
+                                </ul>
+
+                                <h5><i class="fas fa-check-circle"></i> 3. 変更の反映</h5>
+                                <div class="code-example">
+                                    <pre><code># 解決した変更を反映
+git add .
+git commit -m "Resolve merge conflicts with main branch"
+git push origin fix-issue-1</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>コードレビューの重要性</h3>
+                    <div class="review-box">
+                        <h4><i class="fas fa-eye"></i> レビューとは</h4>
+                        <p>他のメンバーからPull Requestで提出されたコードをチェックし、問題点や改善点を指摘する作業です。チーム開発を行う際はMergeする（本番環境に落とし込む）前に、本当にPushしてもいいかの確認を行います。その際にこの機能が使えます。</p>
+                        
+                        <div class="review-points">
+                            <div class="review-section">
+                                <h4><i class="fas fa-code-review"></i> コードレビュー</h4>
+                                <p>チームメンバーのコードをチェックし、品質を保つための作業です。</p>
+
+                                <div class="review-checklist">
+                                    <h5>主なチェックポイント：</h5>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> バグの有無</li>
+                                        <li><i class="fas fa-check"></i> コーディング規約との整合性</li>
+                                        <li><i class="fas fa-check"></i> セキュリティ上の問題</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="review-workflow">
+                                <h5>レビューの流れ</h5>
+                                <ol>
+                                    <li>PRの内容を確認</li>
+                                    <li>変更されたコードを確認</li>
+                                    <li>コメントで指摘・提案</li>
+                                    <li>必要に応じて修正を依頼</li>
+                                    <li>修正確認後、承認</li>
+                                </ol>
+                            </div>
+
+                            <div class="review-tips">
+                                <h5><i class="fas fa-lightbulb"></i> レビューのポイント</h5>
+                                <div class="tips-container">
+                                    <div class="tip-item">
+                                        <h6>レビューを依頼する側</h6>
+                                        <ul>
+                                            <li>変更内容を明確に説明</li>
+                                            <li>テスト結果を記載</li>
+                                            <li>自己レビューを実施してから依頼</li>
+                                        </ul>
+                                    </div>
+                                    <div class="tip-item">
+                                        <h6>レビューする側</h6>
+                                        <ul>
+                                            <li>建設的なフィードバック</li>
+                                            <li>具体的な改善案の提示</li>
+                                            <li>タイムリーな対応</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="review-example">
+                            <h5>レビューコメントの例</h5>
+                            <div class="comment-examples">
+                                <div class="bad-comment">
+                                    <p><i class="fas fa-times-circle"></i> 悪い例：</p>
+                                    <blockquote>"このコードは良くない"</blockquote>
+                                </div>
+                                <div class="good-comment">
+                                    <p><i class="fas fa-check-circle"></i> 良い例：</p>
+                                    <blockquote>"変数名をより具体的にすることで、コードの意図が明確になると思います。例: userInput → loginEmailInput"</blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 実践編 -->
+        <section id="practice" class="section">
+            <div class="container">
+                <h2><i class="fas fa-hands-on"></i> 実践編</h2>
+                <div class="content-box">
+                    <p>実際に手を動かしてみましょう！以下の手順で進めていきます。</p>
+                    
+                    <div class="step">
+                        <h3>Step 1: Issueを立てる</h3>
+                        <p>まずは練習用リポジトリにIssueを作成してみましょう。</p>
+                        
+                        <div class="step-content">
+                            <h4>基本的な手順</h4>
+                            <ol>
+                                <li>GitHubでリポジトリを開く</li>
+                                <li>「Issues」タブをクリック</li>
+                                <li>「New issue」ボタンをクリック</li>
+                                <li>タイトルと内容を入力</li>
+                                <li>ラベルを設定（後述）</li>
+                                <li>担当者を設定（必要な場合）</li>
+                                <li>「Submit new issue」をクリック</li>
+                            </ol>
+
+                            <div class="feature-explanation">
+                                <h4><i class="fas fa-tags"></i> ラベル機能について</h4>
+                                <p>ラベルはIssueの種類や状態を視覚的に表現する機能です。</p>
+                                
+                                <div class="label-examples">
+                                    <h5>主な標準ラベル</h5>
+                                    <div class="label-list">
+                                        <div class="label-item">
+                                            <span class="label bug">bug</span>
+                                            <p>バグ報告用</p>
+                                        </div>
+                                        <div class="label-item">
+                                            <span class="label enhancement">enhancement</span>
+                                            <p>機能改善・追加用</p>
+                                        </div>
+                                        <div class="label-item">
+                                            <span class="label documentation">documentation</span>
+                                            <p>ドキュメント関連</p>
+                                        </div>
+                                        <div class="label-item">
+                                            <span class="label help-wanted">help wanted</span>
+                                            <p>助けが必要な課題</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="tip-box">
+                                        <h5><i class="fas fa-lightbulb"></i> ラベルの使い方のコツ</h5>
+                                        <ul>
+                                            <li>複数のラベルを組み合わせることができます
+                                                <div class="label-combination">
+                                                    <span class="label bug">bug</span>
+                                                    <span class="label priority-high">priority: high</span>
+                                                </div>
+                                            </li>
+                                            <li>プロジェクトに合わせて新しいラベルを作成できます
+                                                <div class="custom-label-example">
+                                                    <span class="label design">design</span>
+                                                    <span class="label in-review">in review</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="assignee-section">
+                                    <h5><i class="fas fa-user"></i> 担当者（Assignees）の設定</h5>
+                                    <ul>
+                                        <li>課題の担当者を明確にできます</li>
+                                        <li>複数人をアサインすることも可能</li>
+                                        <li>担当者には自動で通知が送られます</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="image-space">ここにIssue作成の画像を入れます</div>
+                    </div>
+                    
+                    <div class="step">
+                        <h3>Step 2: リポジトリをフォークしてローカルに取得</h3>
+                        <p>練習用リポジトリをフォークして、自分のPC上に複製します。</p>
+                        
+                        <div class="step-content">
+                            <h4>フォークとは</h4>
+                            <p>他の人のリポジトリのコピーを自分のGitHubアカウントに作成することです。これにより、元のプロジェクトに影響を与えることなく、自由に変更を加えることができます。</p>
+
+                        <h4>クローンとは</h4>
+                        <div class="clone-explanation">
+                            <p>クローンとは、GitHubのリポジトリをローカル（自分のPC）にコピーすることです。</p>
+                            
+                            <div class="clone-benefits">
+                                <h5><i class="fas fa-lightbulb"></i> クローンのメリット</h5>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> オフラインでも作業できる</li>
+                                    <li><i class="fas fa-check"></i> 好きなエディタでコードを編集できる</li>
+                                    <li><i class="fas fa-check"></i> ローカルでテストを実行できる</li>
+                                    <li><i class="fas fa-check"></i> 変更履歴を完全に保持できる</li>
+                                </ul>
+                            </div>
+
+                            <div class="tip-box">
+                                <h5><i class="fas fa-info-circle"></i> 注意点：</h5>
+                                <ul>
+                                    <li>プライベートリポジトリの場合は認証情報が必要</li>
+                                    <li>大きなリポジトリは時間がかかる場合あり</li>
+                                    <li>Git LFSを使用しているリポジトリは追加設定が必要</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                            <div class="sub-steps">
+                                <div class="sub-step">
+                                    <h5>1. フォークを作成</h5>
+                                    <ol>
+                                        <li>練習用リポジトリのページを開く</li>
+                                        <li>右上の「Fork」ボタンをクリック</li>
+                                        <li>必要に応じて設定を確認し、「Create fork」をクリック</li>
+                                    </ol>
+                                    <div class="image-space">ここにフォークボタンの画像を入れます</div>
+                                </div>
+
+                                <div class="sub-step">
+                                    <h5>2. ローカルにクローン</h5>
+                                    <ol>
+                                        <li>フォークしたリポジトリページを開く</li>
+                                        <li>緑色の「Code」ボタンをクリック</li>
+                                        <li>HTTPSのURLをコピー</li>
+                                        <li>VSCodeでターミナルを開く（Ctrl + @）</li>
+                                        <li>適切なフォルダに移動</li>
+                                        <li>クローンコマンドを実行</li>
+                                    </ol>
+                                    <div class="code-example">
+                                        <code>
+# 作業フォルダに移動
+cd プロジェクトを置きたいフォルダのパス
+
+# リポジトリをクローン
+git clone https://github.com/あなたのユーザー名/リポジトリ名.git
+
+# クローンしたフォルダに移動
+cd リポジトリ名
+                                        </code>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tip-box">
+                                <h5><i class="fas fa-lightbulb"></i> Tips：</h5>
+                                <ul>
+                                    <li>フォーク元のリポジトリを「upstream」として追加しておくと、元のリポジトリの更新を取り込めます
+                                        <div class="code-example">
+<code>git remote add upstream https://github.com/元のユーザー名/リポジトリ名.git</code>
+                                        </div>
+                                    </li>
+                                    <li>VSCodeの場合、GUIからも簡単にクローンできます（Ctrl+Shift+P → 「Git: Clone」）</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h3>Step 3: ブランチを作成</h3>
+                        <p>VSCodeでブランチを作成します。</p>
+                        <ol>
+                            <li>VSCodeでリポジトリを開く</li>
+                            <li>左下のブランチ名をクリック</li>
+                            <li>「Create new branch」を選択</li>
+                            <li>ブランチ名を入力（例：fix-issue-1）</li>
+                        </ol>
+                        <div class="code-example">
+                            <code>
+# ターミナルで実行する場合<br>
+git checkout -b fix-issue-1
+                            </code>
+                        </div>
+                        <div class="image-space">ここにブランチ作成の画像を入れます</div>
+                    </div>
+                    
+                    <div class="step">
+                        <h3>Step 4: 変更を加える</h3>
+                        <p>ファイルを編集してコミットします。</p>
+                        <ol>
+                            <li>ファイルを編集</li>
+                            <li>変更を保存（Ctrl+S）</li>
+                            <li>ソース管理パネルを開く（Ctrl+Shift+G）</li>
+                            <li>変更したファイルをステージング（+ボタン）</li>
+                            <li>コミットメッセージを入力</li>
+                            <li>チェックマークをクリックしてコミット</li>
+                        </ol>
+                        <div class="code-example">
+                            <code>
+# ターミナルで実行する場合<br>
+git add .<br>
+git commit -m "fix #1: ログインボタンのバグを修正"
+                            </code>
+                        </div>
+                        <div class="image-space">ここにコミットの画像を入れます</div>
+                    </div>
+                    
+                    <div class="step">
+                        <h3>Step 5: Pull Requestを送る</h3>
+                        <p>変更をGitHubにpushしてPRを作成します。</p>
+                        <ol>
+                            <li>VSCodeで「同期の変更」をクリック（または「publish branch」）</li>
+                            <li>GitHubのリポジトリページに移動</li>
+                            <li>「Compare & pull request」ボタンをクリック</li>
+                            <li>タイトルと説明を入力（Issueとの紐付けを忘れずに）</li>
+                            <li>「Create pull request」をクリック</li>
+                        </ol>
+                        <div class="code-example">
+                            <code>
+# ターミナルで実行する場合<br>
+git push origin fix-issue-1
+                            </code>
+                        </div>
+                        <div class="image-space">ここにPR作成の画像を入れます</div>
+                    </div>
+                    
+                    <div class="step">
+                        <h3>Step 6: Mergeする</h3>
+                        <p>PRの承認からマージまでの流れを見ていきましょう。</p>
+                        <p>今回の練習リポジトリは皆さんにはMerge権限が与えらていないのでできません。やってみたい人は、自分でrepositoryを作成して実践してみましょう。</p>
+                        <div class="step-content">
+                            <h4>1. レビュー依頼を受けた時の流れ</h4>
+                            <div class="review-process">
+                                <div class="process-item">
+                                    <h5><i class="fas fa-code"></i> コードの確認</h5>
+                                    <ul>
+                                        <li>変更されたファイルを一つずつ確認</li>
+                                        <li>コードの品質をチェック（バグ、命名規則、セキュリティ）</li>
+                                        <li>Issue #3 の内容と修正内容が一致しているか確認</li>
+                                    </ul>
+                                </div>
+
+                                <div class="process-item">
+                                    <h5><i class="fas fa-comments"></i> フィードバックの提供</h5>
+                                    <p>必要に応じて修正依頼やコメントを送ります：</p>
+                                    <div class="comment-examples">
+                                        <div class="good-comment">
+                                            <h6>コメントの例：</h6>
+                                            <ul>
+                                                <li>"handleLoginの中にエラーハンドリングを追加した方が良いと思います。"</li>
+                                                <li>"テストケースにエラー時の動作確認も含めてはどうでしょうか？"</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="merge-steps">
+                                <h4>2. マージの実行手順</h4>
+                                <ol>
+                                    <li>
+                                        <strong>承認を行う</strong>
+                                        <ul>
+                                            <li>「Files changed」タブでレビューを開始</li>
+                                            <li>「Review changes」をクリック</li>
+                                            <li>「Approve」を選択して承認</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>マージを実行</strong>
+                                        <ul>
+                                            <li>「Conversation」タブに戻る</li>
+                                            <li>緑色の「Merge pull request」ボタンをクリック</li>
+                                            <li>マージ方法を選択（通常は「Create a merge commit」）</li>
+                                            <li>「Confirm merge」でマージを完了</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+
+                                <div class="info-box merge-info">
+                                    <h5><i class="fas fa-info-circle"></i> マージ後の処理</h5>
+                                    <ul>
+                                        <li>Issue #3 が自動的にCloseされます（PRで "fixes #3" と書いた場合）</li>
+                                        <li>作業ブランチは不要になるので削除可能です</li>
+                                        <li>他のメンバーは `git pull` で最新のmainブランチを取得できます</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="conflict-warning">
+                                <h4><i class="fas fa-exclamation-triangle"></i> コンフリクト解決の手順</h4>
+                                <p>マージ時にコンフリクトが発生した場合は、以下の手順で解決します：</p>
+
+                                <div class="resolution-steps">
+                                    <h5><i class="fas fa-sync"></i> 1. 最新のmainブランチを取得</h5>
+                                    <div class="code-example">
+                                        <pre><code># mainブランチに移動して最新化
+git checkout main
+git pull origin main
+
+# 作業ブランチに戻る
+git checkout fix-issue-1
+
+# mainの内容を作業ブランチに取り込む
+git merge main</code></pre>
+                                    </div>
+
+                                    <h5><i class="fas fa-edit"></i> 2. コンフリクトの解決</h5>
+                                    <p>VSCodeのマージエディタを使用して解決します：</p>
+                                    <ul>
+                                        <li>赤色の部分: 現在のブランチの内容（あなたの変更）</li>
+                                        <li>緑色の部分: 取り込もうとしている内容（mainブランチの変更）</li>
+                                        <li>「Accept Current」「Accept Incoming」「Accept Both」から適切な方を選択</li>
+                                    </ul>
+
+                                    <h5><i class="fas fa-check-circle"></i> 3. 変更の反映</h5>
+                                    <div class="code-example">
+                                        <pre><code># 解決した変更を反映
+git add .
+git commit -m "Resolve merge conflicts with main branch"
+git push origin fix-issue-1</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="image-space">ここにマージの流れの画像を入れます</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 GitHub入門チュートリアル</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
