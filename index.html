@@ -48,27 +48,79 @@
                 <h2><i class="fas fa-tasks"></i> Issueとは</h2>
                 <div class="content-box">
                     <h3>Issueの定義</h3>
-                    <p>Issueとは、プロジェクトの課題や改善提案を記録・管理・提案するための機能です。「チームの連絡ノート」のようなものと考えましょう。</p>
+                    <div class="issue-definition">
+                        <div class="issue-main">
+                            <p><b>Issue（イシュー）</b>とは、GitHub上でプロジェクトに関する「やること」や「問題点」、「改善のアイデア」などを記録・管理・共有するための機能です。</p>
+                            
+                            <div class="issue-simple">
+                                <i class="fas fa-sticky-note"></i>
+                                <p>もっとわかりやすく言えば、<b>チームで使う「やることメモ」や「相談ノート」</b>のようなものです。</p>
+                            </div>
+                        </div>
+
+                        <div class="issue-example">
+                            <div class="example-header">
+                                <i class="fas fa-chalkboard"></i>
+                                <h4>例えば、文化祭の準備で...</h4>
+                            </div>
+                            <div class="sticky-notes">
+                                <div class="sticky-note">
+                                    <i class="fas fa-user-friends"></i>
+                                    <p>「ポスターを作る人は誰にする？」</p>
+                                </div>
+                                <div class="sticky-note">
+                                    <i class="fas fa-clipboard-list"></i>
+                                    <p>「メニュー表がまだ決まってないよ」</p>
+                                </div>
+                                <div class="sticky-note">
+                                    <i class="fas fa-paint-brush"></i>
+                                    <p>「このデザイン、少し見づらくない？」</p>
+                                </div>
+                            </div>
+                            <br>
+                            <p>こうした話し合いは、ふだんはホワイトボードやメッセージアプリに書き込みながら進めていると思います。GitHubで共同開発を行う時は、Issueという機能を使います。</p>
+                        </div>
+                    </div>
                     
-                    <h3>具体的な使用場面</h3>
+                    <h3>具体的な使用例</h3>
                     <ul>
                         <li><i class="fas fa-bug"></i> バグ報告：プログラムの不具合を報告する</li>
                         <li><i class="fas fa-lightbulb"></i> 機能提案：新しい機能のアイデアを共有する</li>
-                        <li><i class="fas fa-question-circle"></i> 質問：分からないことを質問する</li>
-                        <li><i class="fas fa-clipboard-list"></i> タスク管理：やるべきことをリスト化する</li>
+                        <li><i class="fas fa-question-circle"></i> 質問：分からないことや矛盾点を質問・指摘する</li>
+                        <li><i class="fas fa-clipboard-list"></i> タスク管理：Todoリストとしてやることを管理するときに使用する</li>
                     </ul>
 
-                    <h3>書き方のポイント</h3>
+                    <h3>Issueの書き方</h3>
+<div class="issue-format">
+    <h4><i class="fas fa-pencil-alt"></i> 基本的な構成</h4>
+    <div class="format-structure">
+        <ul class="issue-structure">
+            <li><strong>タイトル：</strong> 一目で内容が分かる具体的な件名</li>
+            <li><strong>概要：</strong> 問題や提案の詳細な説明</li>
+            <li><strong>再現手順：</strong> バグの場合、どうすれば同じ現象が発生するか</li>
+            <li><strong>期待する動作：</strong> 本来どうあるべきか</li>
+            <li><strong>現在の動作：</strong> 現在どのような状態か</li>
+            <li><strong>環境情報：</strong> OS、ブラウザ、バージョンなど</li>
+        </ul>
+    </div>
+</div>
+
                     <div class="point-box importance-section">
                         <h4>1. タイトルは具体的に</h4>
                         <p>悪い例：「バグがある」</p>
                         <p>良い例：「ログインボタンをクリックしても反応しない」</p>
                         <div class="importance-note">
-                            <h5><i class="fas fa-exclamation-circle"></i> なぜ重要か：</h5>
+                            <h5><i class="fas fa-exclamation-circle"></i> タイトルを具体的に書かないと…</h5>
                             <ul>
-                                <li class="risk">問題点：曖昧なタイトルだと、同じ問題が重複して報告される</li>
-                                <li class="risk">問題点：チーム全員が内容を確認する必要があり、時間のロスが発生</li>
-                                <li class="benefit">利点：具体的なタイトルで素早く問題を特定でき、対応の優先順位も決めやすい</li>
+                                <li class="risk">曖昧なタイトルだと、同じ問題が重複して報告される</li>
+                                <li class="risk">チーム全員が内容を確認する必要があり、時間のロスが発生</li>
+                            </ul>
+                        </div>
+                        <div class="importance-note">
+                            <h5><i class="fas fa-exclamation-circle"></i> タイトルを具体的に書くと…</h5>
+                            <ul>
+                                <li class="benefit">パッと見た時に問題を特定できる。</li>
+                                <li class="benefit">問題に対しての対応の優先順位も決めやすい</li>
                             </ul>
                         </div>
                     </div>
@@ -76,11 +128,10 @@
                     <div class="point-box importance-section">
                         <h4>2. 内容は箇条書きで整理</h4>
                         <div class="importance-note">
-                            <h5><i class="fas fa-exclamation-circle"></i> なぜ重要か：</h5>
+                            <h5><i class="fas fa-exclamation-circle"></i>理由</h5>
                             <ul>
-                                <li class="risk">問題点：文章が長くなると重要な情報を見落としやすい</li>
-                                <li class="risk">問題点：再現手順が不明確だと、解決に時間がかかる</li>
-                                <li class="benefit">利点：必要な情報が整理され、素早く問題解決につながる</li>
+                                <li class="risk">文章が長くなると重要な情報を見落としやすい</li>
+                                <li class="risk">再現手順が不明確だと、解決に時間がかかる</li>
                             </ul>
                         </div>
                     </div>
@@ -152,7 +203,8 @@
 
                     <h3>Issue番号の確認方法</h3>
                     <p>Issueを作成すると、自動的に番号（#1, #2など）が付きます。この番号は後でPRと紐づける時に使うので確認しておいてください。</p>
-                    <div class="image-space">ここにIssue番号の画像を入れます</div>
+                    <br>
+                    <img src="img/1.png" alt="">
 
                     <!-- Issue番号の確認方法の前に追加 -->
                     <div class="info-box">
@@ -407,10 +459,11 @@ fix #3<br>
 
                     <h3>PR番号の確認方法</h3>
                     <p>PRを作成すると、Issueと同様に番号が付きます。レビューやマージの際にこの番号を使います。</p>
-                    <div class="image-space">ここにPR番号の画像を入れます</div>
+                    <br>
+                    <img src="img/2.png" alt="">
 
-                    <h3>Pull Requestの例</h3>
                     <div class="example-box">
+                        <h3>Pull Requestの例</h3>
                         <div class="pr-example">
                             <h4>タイトル：ログインボタンの修正 #3</h4>
                             
@@ -439,7 +492,7 @@ fix #3<br>
                                 </ul>
 
                                 <div class="code-diff">
-                                    <code>
+                                    <code style="background-color: #282c34;">
                                         <span class="diff-add">+ loginButton.addEventListener('click', handleLogin);</span><br>
                                         <span class="diff-add">+ function handleLogin(event) {</span><br>
                                         <span class="diff-add">+     event.preventDefault();</span><br>
@@ -649,7 +702,7 @@ git push origin fix-issue-1</code></pre>
                         <div class="step-content">
                             <h4>基本的な手順</h4>
                             <ol>
-                                <li>GitHubでリポジトリを開く</li>
+                                <li>GitHubで <a href="https://github.com/s-ao213/Test_PullRequest">練習用リポジトリ</a> を開く</li>
                                 <li>「Issues」タブをクリック</li>
                                 <li>「New issue」ボタンをクリック</li>
                                 <li>タイトルと内容を入力</li>
@@ -673,6 +726,7 @@ git push origin fix-issue-1</code></pre>
                                             <span class="label enhancement">enhancement</span>
                                             <p>機能改善・追加用</p>
                                         </div>
+                                        <br>
                                         <div class="label-item">
                                             <span class="label documentation">documentation</span>
                                             <p>ドキュメント関連</p>
@@ -712,13 +766,12 @@ git push origin fix-issue-1</code></pre>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="image-space">ここにIssue作成の画像を入れます</div>
+                        <img src="img/3.png" alt="">
                     </div>
                     
                     <div class="step">
                         <h3>Step 2: リポジトリをフォークしてローカルに取得</h3>
-                        <p>練習用リポジトリをフォークして、自分のPC上に複製します。</p>
+                        <p><a href="https://github.com/s-ao213/Test_PullRequest">練習用リポジトリ</a>をフォークして、自分のPC上に複製します。</p>
                         
                         <div class="step-content">
                             <h4>フォークとは</h4>
@@ -756,7 +809,7 @@ git push origin fix-issue-1</code></pre>
                                         <li>右上の「Fork」ボタンをクリック</li>
                                         <li>必要に応じて設定を確認し、「Create fork」をクリック</li>
                                     </ol>
-                                    <div class="image-space">ここにフォークボタンの画像を入れます</div>
+                                    <img src="img/4.png" alt="">
                                 </div>
 
                                 <div class="sub-step">
@@ -770,14 +823,16 @@ git push origin fix-issue-1</code></pre>
                                         <li>クローンコマンドを実行</li>
                                     </ol>
                                     <div class="code-example">
-                                        <code>
-# 作業フォルダに移動
+<code># 作業フォルダに移動
+<br>
 cd プロジェクトを置きたいフォルダのパス
-
+<br>
 # リポジトリをクローン
+<br>
 git clone https://github.com/あなたのユーザー名/リポジトリ名.git
-
+<br>
 # クローンしたフォルダに移動
+<br>
 cd リポジトリ名
                                         </code>
                                     </div>
@@ -813,7 +868,6 @@ cd リポジトリ名
 git checkout -b fix-issue-1
                             </code>
                         </div>
-                        <div class="image-space">ここにブランチ作成の画像を入れます</div>
                     </div>
                     
                     <div class="step">
@@ -834,7 +888,6 @@ git add .<br>
 git commit -m "fix #1: ログインボタンのバグを修正"
                             </code>
                         </div>
-                        <div class="image-space">ここにコミットの画像を入れます</div>
                     </div>
                     
                     <div class="step">
@@ -853,7 +906,7 @@ git commit -m "fix #1: ログインボタンのバグを修正"
 git push origin fix-issue-1
                             </code>
                         </div>
-                        <div class="image-space">ここにPR作成の画像を入れます</div>
+                        <img src="img/5.png" alt="">
                     </div>
                     
                     <div class="step">
@@ -927,13 +980,15 @@ git push origin fix-issue-1
                                     <h5><i class="fas fa-sync"></i> 1. 最新のmainブランチを取得</h5>
                                     <div class="code-example">
                                         <pre><code># mainブランチに移動して最新化
+<br>
 git checkout main
-git pull origin main
+<br>
+git pull origin main <br>
 
-# 作業ブランチに戻る
-git checkout fix-issue-1
+# 作業ブランチに戻る <br>
+git checkout fix-issue-1 <br>
 
-# mainの内容を作業ブランチに取り込む
+# mainの内容を作業ブランチに取り込む <br>
 git merge main</code></pre>
                                     </div>
 
@@ -947,15 +1002,15 @@ git merge main</code></pre>
 
                                     <h5><i class="fas fa-check-circle"></i> 3. 変更の反映</h5>
                                     <div class="code-example">
-                                        <pre><code># 解決した変更を反映
-git add .
-git commit -m "Resolve merge conflicts with main branch"
+                                        <pre><code># 解決した変更を反映 <br>
+git add . <br>
+git commit -m "Resolve merge conflicts with main branch" <br>
 git push origin fix-issue-1</code></pre>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="image-space">ここにマージの流れの画像を入れます</div>
+                        <img src="img/6.png" alt="">
                     </div>
                 </div>
             </div>

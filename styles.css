@@ -66,6 +66,12 @@ main {
     padding: 2rem 0;
 }
 
+img {
+    max-width: 80%;
+    height: auto;
+    text-align: center;
+}
+
 .section {
     margin-bottom: 3rem;
 }
@@ -957,6 +963,85 @@ footer {
     gap: 0.5rem;
 }
 
+/* CSSの追加 */
+.issue-definition {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+}
+
+.issue-main {
+    margin-bottom: 1.5rem;
+}
+
+.issue-simple {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #e3f2fd;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+}
+
+.issue-simple i {
+    font-size: 1.5rem;
+    color: #1976d2;
+}
+
+.example-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.example-header i {
+    color: #455a64;
+}
+
+.example-header h4 {
+    margin: 0;
+    color: #455a64;
+    font-size: 1.1rem;
+}
+
+.sticky-notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.sticky-note {
+    background-color: #fff3bf;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    transition: transform 0.2s ease;
+}
+
+.sticky-note:hover {
+    transform: translateY(-2px);
+}
+
+.sticky-note i {
+    color: #f59f00;
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+.sticky-note p {
+    margin: 0;
+    color: #495057;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
 @media (max-width: 768px) {
     header h1 {
         font-size: 1.2rem;
@@ -1020,6 +1105,15 @@ footer {
 
     .tip-box ul {
         padding-left: 1rem;
+    }
+
+    .sticky-notes {
+        grid-template-columns: 1fr;
+    }
+    
+    .issue-simple {
+        flex-direction: column;
+        text-align: center;
     }
 }
 
@@ -1142,4 +1236,42 @@ footer {
 .conflict-example code .comment {
     color: #57606a;
     margin-left: 0.5rem;
+}
+
+/* Issue構成部分のスタイル */
+.format-structure {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+}
+
+.issue-structure {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.issue-structure li {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background-color: #f6f8fa;
+    border-radius: 6px;
+    border-left: 4px solid #0366d6;
+}
+
+.issue-structure strong {
+    color: #0366d6;
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .format-structure {
+        padding: 1rem;
+    }
+    
+    .issue-structure li {
+        padding: 0.6rem;
+        margin-bottom: 0.8rem;
+    }
 }
