@@ -581,10 +581,11 @@ footer {
     margin: 1rem 0;
 }
 
-.conflict-example .code-example {
-    border: none;
-    background: transparent;
+.conflict-example pre {
     margin: 0;
+    padding: 0;
+    overflow-x: auto;  /* スクロール可能に */
+    white-space: pre-wrap;  /* 長い行を折り返し */
 }
 
 .conflict-example code {
@@ -594,7 +595,7 @@ footer {
     line-height: 1.6;
 }
 
-/* mainブランチの元のコード */
+/* mainブランチのコード部分 */
 .conflict-example code .main-code {
     display: block;
     background-color: #f0f0f0;
@@ -603,15 +604,16 @@ footer {
     border-radius: 4px 4px 0 0;
     border-left: 4px solid #2ecc71;
     margin-bottom: 0.5rem;
+    word-break: break-word;  /* 長い行を適切に折り返し */
 }
 
-/* コンフリクトマーカー用のスタイル */
+/* コンフリクトマーカー */
 .conflict-example code .conflict-marker {
     display: block;
     background-color: #fff3d4;
     color: #735c0f;
     padding: 0.2rem 1rem;
-    font-family: monospace;
+    word-break: break-word;
 }
 
 /* Aさんの変更 */
@@ -621,6 +623,7 @@ footer {
     padding: 0.5rem 1rem;
     border-left: 4px solid #e74c3c;
     color: #333;
+    word-break: break-word;
 }
 
 /* Bさんの変更 */
@@ -630,612 +633,49 @@ footer {
     padding: 0.5rem 1rem;
     border-left: 4px solid #3498db;
     color: #333;
+    word-break: break-word;
 }
 
 /* コメント部分 */
 .conflict-example code .comment {
     color: #57606a;
     margin-left: 0.5rem;
+    word-break: break-word;
 }
 
-/* ワークフローステップ */
-.workflow-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
-.workflow-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    background-color: white;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
-}
-
-.workflow-step:hover {
-    transform: translateX(5px);
-}
-
-.step-number {
-    background-color: #0366d6;
-    color: white;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    flex-shrink: 0;
-}
-
-.step-content {
-    flex-grow: 1;
-}
-
-.step-content h6 {
-    color: #24292e;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-}
-
-.code-mini {
-    background-color: #f6f8fa;
-    padding: 0.5rem;
-    border-radius: 4px;
-    margin: 0.5rem 0;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 0.9rem;
-}
-
-.step-icons {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    color: #0366d6;
-    margin: 0.5rem 0;
-}
-
-.step-description {
-    color: #586069;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-}
-
-/* レビューセクションのスタイル */
-.review-box {
-    background-color: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1.5rem 0;
-    border-left: 4px solid #0366d6;
-}
-
-.review-points {
-    display: grid;
-    gap: 1.5rem;
-    margin: 1rem 0;
-}
-
-.review-section, .review-workflow {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.review-section h5, .review-workflow h5 {
-    color: #0366d6;
-    margin-bottom: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.review-workflow ol {
-    list-style-position: inside;
-    padding-left: 0;
-    margin: 0;
-}
-
-.review-workflow li {
-    margin-bottom: 0.5rem;
-    padding: 0.3rem 0;
-    border-bottom: 1px solid #e1e4e8;
-}
-
-.review-workflow li:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-}
-
-.review-tips {
-    background-color: #e6ffed;
-    padding: 1rem;
-    border-radius: 6px;
-}
-
-.tips-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-top: 0.8rem;
-}
-
-.tip-item {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 4px;
-}
-
-.tip-item h6 {
-    color: #24292e;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-}
-
-.review-example {
-    margin-top: 1.5rem;
-}
-
-.comment-examples {
-    display: grid;
-    gap: 1rem;
-    margin-top: 0.8rem;
-}
-
-.bad-comment, .good-comment {
-    padding: 1rem;
-    border-radius: 4px;
-}
-
-.bad-comment {
-    background-color: #fff5f5;
-    border-left: 4px solid #d73a49;
-}
-
-.good-comment {
-    background-color: #e6ffed;
-    border-left: 4px solid #2ea44f;
-}
-
-.comment-examples blockquote {
-    margin: 0.5rem 0 0;
-    padding-left: 1rem;
-    border-left: 2px solid #e1e4e8;
-    color: #586069;
-    font-style: italic;
-}
-
-.feature-explanation {
-    background-color: #f6f8fa;
-    border-radius: 6px;
-    padding: 1rem;
-    margin: 1rem 0;
-}
-
-.label-examples {
-    margin: 1rem 0;
-}
-
-.label-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin: 1rem 0;
-}
-
-.label-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: white;
-    padding: 0.5rem;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.label.documentation {
-    background-color: #0075ca;
-    color: white;
-}
-
-.label.help-wanted {
-    background-color: #008672;
-    color: white;
-}
-
-.label.design {
-    background-color: #fbca04;
-    color: #24292e;
-}
-
-.label.in-review {
-    background-color: #b60205;
-    color: white;
-}
-
-.label-combination {
-    display: flex;
-    gap: 0.5rem;
-    margin: 0.5rem 0;
-}
-
-.custom-label-example {
-    display: flex;
-    gap: 0.5rem;
-    margin: 0.5rem 0;
-}
-
-.assignee-section {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 4px;
-    margin-top: 1rem;
-    border-left: 4px solid #0366d6;
-}
-
-/* クローン説明のスタイル */
-.clone-explanation {
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin: 1rem 0;
-}
-
-.clone-benefits {
-    margin: 1rem 0;
-    background-color: white;
-    padding: 1rem;
-    border-radius: 6px;
-    border-left: 4px solid #2ea44f;
-}
-
-.method-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin: 1rem 0;
-}
-
-.method-item {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.method-item h6 {
-    color: #0366d6;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.clone-methods .code-example {
-    margin: 0.5rem 0;
-}
-
-.merge-steps {
-    background-color: #f6f8fa;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1rem 0;
-}
-
-.process-item {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.merge-info {
-    background-color: #e6ffed;
-    border-left: 4px solid #2ea44f;
-}
-
-.conflict-warning {
-    background-color: #fff5f5;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1rem 0;
-    border-left: 4px solid #d73a49;
-}
-
-.review-process {
-    margin: 1rem 0;
-}
-
-.process-item h5 {
-    color: #0366d6;
-    margin-bottom: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-/* CSSの追加 */
-.issue-definition {
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin: 1rem 0;
-}
-
-.issue-main {
-    margin-bottom: 1.5rem;
-}
-
-.issue-simple {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background-color: #e3f2fd;
-    padding: 1rem;
-    border-radius: 6px;
-    margin-top: 1rem;
-}
-
-.issue-simple i {
-    font-size: 1.5rem;
-    color: #1976d2;
-}
-
-.example-header {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.example-header i {
-    color: #455a64;
-}
-
-.example-header h4 {
-    margin: 0;
-    color: #455a64;
-    font-size: 1.1rem;
-}
-
-.sticky-notes {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.sticky-note {
-    background-color: #fff3bf;
-    padding: 1rem;
-    border-radius: 6px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    display: flex;
-    align-items: flex-start;
-    gap: 0.8rem;
-    transition: transform 0.2s ease;
-}
-
-.sticky-note:hover {
-    transform: translateY(-2px);
-}
-
-.sticky-note i {
-    color: #f59f00;
-    font-size: 1.2rem;
-    margin-top: 0.2rem;
-}
-
-.sticky-note p {
-    margin: 0;
-    color: #495057;
-    font-size: 0.95rem;
-    line-height: 1.4;
-}
-
+/* モバイル対応 */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 1.2rem;
-    }
-    
-    nav ul {
-        gap: 1rem;
-    }
-    
-    main {
-        margin-top: 140px;
-    }
-    
-    h2 {
-        font-size: 1.5rem;
-    }
-    
-    .content-box {
-        padding: 1.5rem;
+    .conflict-example {
+        padding: 1rem;
     }
 
-    .workflow-step {
-        flex-direction: column;
-        align-items: flex-start;
+    .conflict-example code {
+        font-size: 12px;  /* フォントサイズを少し小さく */
     }
 
-    .step-number {
-        margin-bottom: 0.5rem;
-    }
-
-    .tips-container {
-        grid-template-columns: 1fr;
-    }
-
-    .method-grid {
-        grid-template-columns: 1fr;  /* 1列に変更 */
-        gap: 1rem;
-    }
-
-    .method-item {
-        padding: 0.8rem;
-    }
-
-    .clone-benefits ul {
-        padding-left: 1rem;
-    }
-
-    .clone-methods h5 {
-        margin-top: 1.5rem;
-    }
-
-    .code-example pre {
-        padding: 0.3rem;
-    }
-
-    .code-example code {
-        font-size: 13px;  /* スマホでも読みやすいサイズに */
-        overflow-x: auto;
-        white-space: pre;
-    }
-
-    .tip-box ul {
-        padding-left: 1rem;
-    }
-
-    .sticky-notes {
-        grid-template-columns: 1fr;
-    }
-    
-    .issue-simple {
-        flex-direction: column;
-        text-align: center;
+    .conflict-example code .main-code,
+    .conflict-example code .branch-a,
+    .conflict-example code .branch-b,
+    .conflict-example code .conflict-marker {
+        padding: 0.5rem;  /* パディングを少し小さく */
     }
 }
 
 @media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
-    }
-    
-    nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    main {
-        margin-top: 160px;
-    }
-    
-    h2 {
-        font-size: 1.3rem;
-    }
-    
-    h3 {
-        font-size: 1.1rem;
-    }
-    
-    .content-box {
-        padding: 1rem;
+    .conflict-example {
+        padding: 0.5rem;
     }
 
-    .clone-explanation {
-        padding: 1rem;
+    .conflict-example code {
+        font-size: 11px;  /* さらに小さく */
     }
 
-    .method-item h6 {
-        font-size: 0.85rem;
+    .conflict-example code .main-code,
+    .conflict-example code .branch-a,
+    .conflict-example code .branch-b,
+    .conflict-example code .conflict-marker {
+        padding: 0.3rem;  /* さらに小さく */
     }
-
-    .code-example {
-        margin: 0.3rem 0;
-    }
-
-    .code-header {
-        padding: 0.2rem 0.4rem;
-    }
-
-    .code-language {
-        font-size: 0.7rem;
-    }
-
-    .copy-button {
-        padding: 0.1rem 0.3rem;
-        font-size: 0.7rem;
-    }
-}
-
-/* 具体例のスタイル追加 */
-.conflict-example {
-    margin: 1.5rem 0;
-    padding: 1.5rem;
-    background-color: #f6f8fa;
-    border: 1px solid #e1e4e8;
-    border-radius: 6px;
-}
-
-.conflict-example h5 {
-    color: #24292e;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #e1e4e8;
-}
-
-.conflict-example .code-example {
-    border: none;
-    background: transparent;
-    margin: 0;
-}
-
-.conflict-example code {
-    display: block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-.conflict-example code .main-code {
-    display: block;
-    background-color: #f0f0f0;
-    color: #333;
-    padding: 0.5rem 1rem;
-    border-radius: 4px 4px 0 0;
-    border-left: 4px solid #2ecc71;
-    margin-bottom: 0.5rem;
-}
-
-.conflict-example code .conflict-marker {
-    display: block;
-    background-color: #fff3d4;
-    color: #735c0f;
-    padding: 0.2rem 1rem;
-    font-family: monospace;
-}
-
-.conflict-example code .branch-a {
-    display: block;
-    background-color: #ffebe9;
-    padding: 0.5rem 1rem;
-    border-left: 4px solid #e74c3c;
-    color: #333;
-}
-
-.conflict-example code .branch-b {
-    display: block;
-    background-color: #e7f5ff;
-    padding: 0.5rem 1rem;
-    border-left: 4px solid #3498db;
-    color: #333;
-}
-
-.conflict-example code .comment {
-    color: #57606a;
-    margin-left: 0.5rem;
 }
 
 /* Issue構成部分のスタイル */
@@ -1249,29 +689,270 @@ footer {
 .issue-structure {
     list-style: none;
     padding: 0;
-    margin: 0;
+    display: grid;
+    gap: 0.8rem;
 }
 
-.issue-structure li {
-    margin-bottom: 1rem;
-    padding: 0.8rem;
-    background-color: #f6f8fa;
+.issue-item {
+    background-color: #f8f9fa;
     border-radius: 6px;
-    border-left: 4px solid #0366d6;
+    overflow: hidden;
+    transition: transform 0.2s ease;
 }
 
-.issue-structure strong {
+.issue-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.item-header {
+    background-color: #f1f3f5;
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.item-header i {
     color: #0366d6;
-    margin-right: 0.5rem;
+    width: 1.2rem;
+    text-align: center;
+}
+
+.item-header strong {
+    color: #24292e;
+    font-weight: 500;
+}
+
+.item-content {
+    padding: 0.8rem 1rem;
+    color: #586069;
+    line-height: 1.5;
+}
+
+/* .gitignore関連のスタイル */
+.gitignore-section {
+    margin: 1rem 0;
+}
+
+.gitignore-examples {
+    background-color: #f6f8fa;
+    padding: 1rem;
+    border-radius: 6px;
+    margin: 1rem 0;
+}
+
+.icon-list {
+    list-style: none;
+    padding: 0;
+}
+
+.icon-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.icon-list i {
+    color: #0366d6;
+    margin-top: 0.2rem;
+}
+
+.example-content {
+    flex: 1;
+}
+
+.example-content strong {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: #24292e;
+}
+
+.example-content code {
+    background-color: #f6f8fa;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.example-content .note {
+    display: block;
+    color: #586069;
+    font-size: 0.9em;
+    margin-top: 0.2rem;
 }
 
 @media (max-width: 768px) {
-    .format-structure {
-        padding: 1rem;
+    .icon-list li {
+        flex-direction: column;
     }
     
-    .issue-structure li {
-        padding: 0.6rem;
-        margin-bottom: 0.8rem;
+    .icon-list i {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* styles.cssに追加 */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #0366d6;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    background-color: #024dab;
+    transform: translateY(-3px);
+}
+
+.scroll-to-top .tooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.scroll-to-top:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* mainブランチ保護セクションのスタイル */
+.protection-section {
+    margin: 2rem 0;
+}
+
+.protection-details {
+    margin-top: 1.5rem;
+}
+
+.protection-rule {
+    background-color: #fff5f5;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.protection-rule h5 {
+    color: #d73a49;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.protection-reasons {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.protection-reasons li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #24292e;
+}
+
+.protection-reasons i {
+    color: #28a745;
+}
+
+.correct-workflow {
+    background-color: #f6f8fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.workflow-steps {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.workflow-steps .step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.step-number {
+    background-color: #0366d6;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.step-details h6 {
+    color: #24292e;
+    margin-bottom: 0.5rem;
+}
+
+.code-block {
+    background-color: #f0f0f0;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+}
+
+.code-block code {
+    color: #24292e;
+    font-family: 'Consolas', monospace;
+    font-size: 0.9rem;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .protection-rule {
+        padding: 1rem;
+    }
+
+    .workflow-steps {
+        gap: 1rem;
+    }
+
+    .code-block {
+        overflow-x: auto;
+        white-space: nowrap;
     }
 }

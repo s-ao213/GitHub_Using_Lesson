@@ -135,6 +135,25 @@ document.addEventListener('DOMContentLoaded', function() {
             ticking = true;
         }
     });
+
+    const scrollToTopButton = document.getElementById('scroll-to-top');
+    
+    // スクロール位置に応じてボタンの表示/非表示を切り替え
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            scrollToTopButton.classList.add('visible');
+        } else {
+            scrollToTopButton.classList.remove('visible');
+        }
+    });
+    
+    // ボタンクリック時の処理
+    scrollToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 });
 
 // フェードインアニメーション用のCSS追加
