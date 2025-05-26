@@ -407,104 +407,76 @@
                             </div>
 
                     <div class="protection-section">
-    <div class="warning-box">
-        <h4><i class="fas fa-shield-alt"></i> mainブランチの保護</h4>
-        <p>多くのプロジェクトでは、mainブランチに特別な「保護」設定がされています。これは、本番環境で使用されるコードの品質と安定性を確保するためです。mainブランチの取り扱いには注意して取り組みましょう。</p>
+                        <div class="warning-box">
+                            <h4><i class="fas fa-shield-alt"></i> mainブランチの保護</h4>
+                            <p>多くのプロジェクトでは、mainブランチに特別な「保護」設定がされています。これは、本番環境で使用されるコードの品質と安定性を確保するためです。mainブランチの取り扱いには注意して取り組みましょう。</p>
 
-        <div class="protection-details">
-            <div class="protection-rule">
-                <h4>解説</h4>
-                <h5><i class="fas fa-lock"></i> 直接プッシュの禁止</h5>
-                <div class="rule-content">
-                    <p>mainブランチには直接コードをプッシュできません。<br> ※できたとしても控えましょう。</p>
-                    <ul class="protection-reasons">
-                        <h5>理由</h5>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>未テストコードの混入を防止</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>誤った変更による障害を予防</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>コードレビューを必須化</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- <div class="correct-workflow">
-                <h5><i class="fas fa-code-branch"></i> 解決方法</h5>
-                <div class="workflow-steps">
-                    <div class="step">
-                        <span class="step-number">1</span>
-                        <div class="step-details">
-                            <h6>作業用ブランチの作成</h6>
-                            <div class="code-block">
-                                <code style="background-color: aliceblue;">git checkout -b feature/new-feature</code>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="step">
-                        <span class="step-number">2</span>
-                        <div class="step-details">
-                            <h6>変更を作業ブランチに保存</h6>
-                            <div class="code-block">
-                                <code style="background-color: azure;">git add .</code>
-                                <br>
-                                <code style="background-color: azure;">git commit -m "Add new feature"</code>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="step">
-                        <span class="step-number">3</span>
-                        <div class="step-details">
-                            <h6>Pull Requestの作成</h6>
-                            <p>変更内容のレビューを依頼</p>
-                        </div>
-                    </div>
-
-                    <div class="step">
-                        <span class="step-number">4</span>
-                        <div class="step-details">
-                            <h6>レビュー後にマージ</h6>
-                            <p>承認を得てからmainブランチに統合</p>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-        </div>
-    </div>
-</div>
-
-                    <div class="example-box">
-                        <h3>ブランチの使用例</h3>
-                        <div class="branch-example">
-                            <h4>例：ログインボタンのバグ修正</h4>
-                            <div class="branch-flow">
-                                <div class="branch-step">
-                                    <br>
-                                    <p><strong>1. ブランチ作成</strong></p>
-                                    <div class="code-example">
-                                        <code>git checkout -b fix-login-button</code>
+                            <div class="protection-details">
+                                <div class="protection-rule">
+                                    <h4>解説</h4>
+                                    <h5><i class="fas fa-lock"></i> 直接プッシュの禁止</h5>
+                                    <div class="rule-content">
+                                        <p>mainブランチには直接コードをプッシュできません。<br> ※できたとしても控えましょう。</p>
+                                        <ul class="protection-reasons">
+                                            <h5>理由</h5>
+                                            <li>
+                                                <i class="fas fa-check-circle"></i>
+                                                <span>未テストコードの混入を防止</span>
+                                            </li>
+                                            <li>
+                                                <i class="fas fa-check-circle"></i>
+                                                <span>誤った変更による障害を予防</span>
+                                            </li>
+                                            <li>
+                                                <i class="fas fa-check-circle"></i>
+                                                <span>コードレビューを必須化</span>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="branch-step">
-                                    <br>
-                                    <p><strong>2. 変更を加える</strong></p>
-                                    <p>バグの修正作業を実施</p>
-                                </div>
-                                <div class="branch-step">
-                                    <br>
-                                    <p><strong>3. 変更をコミット</strong></p>
-                                    <div class="code-example">
-                                        <code>git commit -m "Fix login button not responding"</code>
+
+                                <!-- <div class="correct-workflow">
+                                    <h5><i class="fas fa-code-branch"></i> 解決方法</h5>
+                                    <div class="workflow-steps">
+                                        <div class="step">
+                                            <span class="step-number">1</span>
+                                            <div class="step-details">
+                                                <h6>作業用ブランチの作成</h6>
+                                                <div class="code-block">
+                                                    <code style="background-color: aliceblue;">git checkout -b feature/new-feature</code>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="step">
+                                            <span class="step-number">2</span>
+                                            <div class="step-details">
+                                                <h6>変更を作業ブランチに保存</h6>
+                                                <div class="code-block">
+                                                    <code style="background-color: azure;">git add .</code>
+                                                    <br>
+                                                    <code style="background-color: azure;">git commit -m "Add new feature"</code>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="step">
+                                            <span class="step-number">3</span>
+                                            <div class="step-details">
+                                                <h6>Pull Requestの作成</h6>
+                                                <p>変更内容のレビューを依頼</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="step">
+                                            <span class="step-number">4</span>
+                                            <div class="step-details">
+                                                <h6>レビュー後にマージ</h6>
+                                                <p>承認を得てからmainブランチに統合</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -539,7 +511,7 @@
                 <h2><i class="fas fa-code-branch"></i> Pull Requestとは</h2>
                 <div class="content-box">
                     <h3>Pull Requestの定義</h3>
-                    <p>Pull Request（PR）は、「設計図とメッセージを添えた“改善の提案書”」のようなものです。レビューしてもらい、メインのコード（実際のプロジェクト）に組み込んでもらうための機能です。</p>
+                    <p>Pull Request（プルリクエスト）とは、「こういうふうに直してみたけど、どう思う？」と、自分の作業内容をチームに見せて相談・提案するための仕組みです。たとえば、学校の文化祭でクラスのポスターを作っているとします。あなたは「ここ、色を変えたらもっと見やすいかも」と思い、自分のコピーに少し手を加えてみます。それをクラスのみんなに見せて、「こんなふうに変えてみたよ。いいと思ったらこれを本番のポスターに使おう」と伝える——これがPull Requestのイメージです。ただ勝手に書き換えるのではなく、「どこを」「どう変えて」「なぜそうしたのか」を一緒に説明することで、みんなが内容を理解し、安心して話し合いながら最終決定できます。開発の現場でも同じで、Pull Requestは安全にチームで作業を進めるための“提案と確認”のツールとして使われています。</p>
 
                     <h3>使用場面</h3>
                     <ul>
