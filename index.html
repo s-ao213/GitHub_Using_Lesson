@@ -56,32 +56,8 @@
                             <p><b>Issue（イシュー）</b>とは、GitHub上でプロジェクトに関する「やること」や「問題点」、「改善のアイデア」などを記録・管理・共有するための機能です。</p>
                             
                             <div class="issue-simple">
-                                <i class="fas fa-sticky-note"></i>
                                 <p>もっとわかりやすく言えば、<b>チームで使う「やることメモ」や「相談ノート」</b>のようなものです。</p>
                             </div>
-                        </div>
-
-                        <div class="issue-example">
-                            <div class="example-header">
-                                <i class="fas fa-chalkboard"></i>
-                                <h4>例えば、文化祭の準備で...</h4>
-                            </div>
-                            <div class="sticky-notes">
-                                <div class="sticky-note">
-                                    <i class="fas fa-user-friends"></i>
-                                    <p>「ポスターを作る人は誰にする？」</p>
-                                </div>
-                                <div class="sticky-note">
-                                    <i class="fas fa-clipboard-list"></i>
-                                    <p>「メニュー表がまだ決まってないよ」</p>
-                                </div>
-                                <div class="sticky-note">
-                                    <i class="fas fa-paint-brush"></i>
-                                    <p>「このデザイン、少し見づらくない？」</p>
-                                </div>
-                            </div>
-                            <br>
-                            <p>こうした話し合いは、ふだんはホワイトボードやメッセージアプリに書き込みながら進めていると思います。GitHubで共同開発を行う時は、Issueという機能を使います。</p>
                         </div>
                     </div>
                     
@@ -94,85 +70,159 @@
                     </ul>
 
                     <h3>Issueの書き方</h3>
-<!-- Issue基本構成部分を更新 -->
-<div class="issue-format">
-    <h4><i class="fas fa-pencil-alt"></i> 基本的な構成</h4>
-    <div class="format-structure">
-        <ul class="issue-structure">
-            <li class="issue-item">
-                <div class="item-header">
-                    <i class="fas fa-heading"></i>
-                    <strong>タイトル：</strong>
-                </div>
-                <div class="item-content">一目で内容が分かる具体的な件名</div>
-            </li>
-            <li class="issue-item">
-                <div class="item-header">
-                    <i class="fas fa-info-circle"></i>
-                    <strong>概要</strong>
-                </div>
-                <div class="item-content">問題や提案の詳細な説明</div>
-            </li>
-            <li class="issue-item">
-                <div class="item-header">
-                    <i class="fas fa-list-ol"></i>
-                    <strong>再現手順</strong>
-                </div>
-                <div class="item-content">バグの場合、どうすれば同じ現象が発生するか</div>
-            </li>
-            <li class="issue-item">
-                <div class="item-header">
-                    <i class="fas fa-check-circle"></i>
-                    <strong>期待する動作</strong>
-                </div>
-                <div class="item-content">本来どうあるべきか</div>
-            </li>
-            <li class="issue-item">
-                <div class="item-header">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <strong>現在の動作</strong>
-                </div>
-                <div class="item-content">現在どのような状態か</div>
-            </li>
-            <li class="issue-item">
-                <div class="item-header">
-                    <i class="fas fa-laptop"></i>
-                    <strong>環境情報</strong>
-                </div>
-                <div class="item-content">OS、ブラウザ、バージョンなど</div>
-            </li>
-        </ul>
-    </div>
-</div>
-
-                    <div class="point-box importance-section">
-                        <h4>1. タイトルは具体的に</h4>
-                        <p>悪い例：「バグがある」</p>
-                        <p>良い例：「ログインボタンをクリックしても反応しない」</p>
-                        <div class="importance-note">
-                            <h5><i class="fas fa-exclamation-circle"></i> タイトルを具体的に書かないと…</h5>
-                            <ul>
-                                <li class="risk">曖昧なタイトルだと、同じ問題が重複して報告される</li>
-                                <li class="risk">チーム全員が内容を確認する必要があり、時間のロスが発生</li>
-                            </ul>
+                    <div class="issue-writing-guide">
+                        <!-- 基本構成 -->
+                        <div class="issue-format">
+                            <h4><i class="fas fa-pencil-alt"></i> 基本的な構成と書き方のポイント</h4>
+                            <div class="format-structure">
+                                <ul class="issue-structure">
+                                    <li class="issue-item">
+                                        <div class="item-header">
+                                            <i class="fas fa-heading"></i>
+                                            <strong>タイトル：</strong>
+                                        </div>
+                                        <div class="item-content">
+                                            <p>一目で内容が分かる具体的な件名</p>
+                                            <div class="writing-tips">
+                                                <h6><i class="fas fa-exclamation-triangle"></i> 注意点：</h6>
+                                                <ul>
+                                                    <li class="risk">曖昧な表現は避ける（例：「バグがある」→「ログインボタンをクリックしても反応しない」）</li>
+                                                    <li class="risk">長すぎるタイトルは読みにくい（50文字以内を目安に）</li>
+                                                    <li class="benefit">問題の場所・症状を具体的に記載する</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="issue-item">
+                                        <div class="item-header">
+                                            <i class="fas fa-info-circle"></i>
+                                            <strong>概要</strong>
+                                        </div>
+                                        <div class="item-content">
+                                            <p>問題や提案の詳細な説明</p>
+                                            <div class="writing-tips">
+                                                <h6><i class="fas fa-exclamation-triangle"></i> 注意点：</h6>
+                                                <ul>
+                                                    <li class="risk">感情的な表現は避ける（「ひどいバグ」→「動作しないバグ」）</li>
+                                                    <li class="risk">専門用語ばかりだと他の人が理解できない</li>
+                                                    <li class="benefit">5W1H（いつ・どこで・何が・なぜ・どのように）を意識する</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="issue-item">
+                                        <div class="item-header">
+                                            <i class="fas fa-list-ol"></i>
+                                            <strong>再現手順</strong>
+                                        </div>
+                                        <div class="item-content">
+                                            <p>バグの場合、どうすれば同じ現象が発生するか</p>
+                                            <div class="writing-tips">
+                                                <h6><i class="fas fa-exclamation-triangle"></i> 注意点：</h6>
+                                                <ul>
+                                                    <li class="risk">手順を省略しすぎると再現できない</li>
+                                                    <li class="risk">「いつものように」など曖昧な表現は使わない</li>
+                                                    <li class="benefit">番号付きリストで順序を明確にする</li>
+                                                    <li class="benefit">他の人でも同じ手順で再現できるよう詳細に記載</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="issue-item">
+                                        <div class="item-header">
+                                            <i class="fas fa-check-circle"></i>
+                                            <strong>期待する動作</strong>
+                                        </div>
+                                        <div class="item-content">
+                                            <p>本来どうあるべきか</p>
+                                            <div class="writing-tips">
+                                                <h6><i class="fas fa-exclamation-triangle"></i> 注意点：</h6>
+                                                <ul>
+                                                    <li class="risk">「正常に動く」だけでは不十分</li>
+                                                    <li class="risk">個人的な希望と仕様を混同しない</li>
+                                                    <li class="benefit">具体的な動作・結果を明記する</li>
+                                                    <li class="benefit">ユーザーにとってのメリットも説明する</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="issue-item">
+                                        <div class="item-header">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                            <strong>現在の動作</strong>
+                                        </div>
+                                        <div class="item-content">
+                                            <p>現在どのような状態か</p>
+                                            <div class="writing-tips">
+                                                <h6><i class="fas fa-exclamation-triangle"></i> 注意点：</h6>
+                                                <ul>
+                                                    <li class="risk">エラーメッセージがある場合は必ず記載する</li>
+                                                    <li class="risk">「動かない」だけでは情報不足</li>
+                                                    <li class="benefit">スクリーンショットやエラーログを添付する</li>
+                                                    <li class="benefit">どの部分が期待と異なるかを明確にする</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="issue-item">
+                                        <div class="item-header">
+                                            <i class="fas fa-laptop"></i>
+                                            <strong>環境情報</strong>
+                                        </div>
+                                        <div class="item-content">
+                                            <p>OS、ブラウザ、バージョンなど</p>
+                                            <div class="writing-tips">
+                                                <h6><i class="fas fa-exclamation-triangle"></i> 注意点：</h6>
+                                                <ul>
+                                                    <li class="risk">環境情報の記載漏れがあると原因究明が困難</li>
+                                                    <li class="risk">「最新版」ではバージョンが不明確</li>
+                                                    <li class="benefit">OS・ブラウザ・アプリのバージョンを正確に記載</li>
+                                                    <li class="benefit">画面サイズ・デバイス情報も必要に応じて追加</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="importance-note">
-                            <h5><i class="fas fa-exclamation-circle"></i> タイトルを具体的に書くと…</h5>
-                            <ul>
-                                <li class="benefit">パッと見た時に問題を特定できる</li>
-                                <li class="benefit">問題に対しての対応の優先順位も決めやすい</li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <div class="point-box importance-section">
-                        <h4>2. 内容は箇条書きで整理</h4>
-                        <div class="importance-note">
-                            <h5><i class="fas fa-exclamation-circle"></i>理由</h5>
-                            <ul>
-                                <li class="risk">文章が長くなると重要な情報を見落としやすい</li>
-                                <li class="risk">再現手順が不明確だと、解決に時間がかかる</li>
-                            </ul>
+                        <!-- 共通の重要ポイント -->
+                        <div class="writing-points">
+                            <div class="point-box importance-section">
+                                <h4><i class="fas fa-lightbulb"></i> 全体的な書き方のコツ</h4>
+                                <div class="importance-grid">
+                                    <div class="importance-note good">
+                                        <h5><i class="fas fa-check-circle"></i> 良い書き方</h5>
+                                        <ul>
+                                            <li class="benefit">簡潔で分かりやすい文章</li>
+                                            <li class="benefit">箇条書きを活用して整理</li>
+                                            <li class="benefit">他の人が理解しやすい表現</li>
+                                            <li class="benefit">必要な情報は漏れなく記載</li>
+                                            <li class="benefit">スクリーンショットや図解を活用</li>
+                                        </ul>
+                                    </div>
+                                    <div class="importance-note bad">
+                                        <h5><i class="fas fa-times-circle"></i> 避けるべき書き方</h5>
+                                        <ul>
+                                            <li class="risk">感情的・批判的な表現</li>
+                                            <li class="risk">曖昧で具体性のない説明</li>
+                                            <li class="risk">長すぎる文章（読みにくい）</li>
+                                            <li class="risk">専門用語の多用</li>
+                                            <li class="risk">重要な情報の記載漏れ</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="final-tips">
+                                    <h5><i class="fas fa-star"></i> 最終チェックポイント</h5>
+                                    <ul>
+                                        <li>他の人が読んで理解できる内容か？</li>
+                                        <li>同じ問題を再現できる情報が揃っているか？</li>
+                                        <li>適切なラベルが付いているか？</li>
+                                        <li>緊急度・重要度が伝わるか？</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -300,29 +350,61 @@
                 <h2><i class="fas fa-code-branch"></i> ブランチとは</h2>
                 <div class="content-box">
                     <h3>ブランチの定義</h3>
-                    <p>ブランチとは、メインのコードから分岐した「作業用の枝」のようなものです。この枝で安全に新機能の開発やバグ修正を行うことができます。</p>
+                    <p>ブランチとは、ソフトウェア開発においてコードの変更を本体（メインのコードベース）から分離して管理する仕組みです。主に、異なる作業（新機能の追加やバグ修正など）を並行して安全に行うために使われます。ブランチを使うことで、他の作業に影響を与えずにコードを変更・実験でき、後で必要に応じて本体に統合（マージ）することが可能になります。</p>
 
-                    <div class="branch-visual">
-                        <h4><i class="fas fa-tree"></i> ブランチを木に例えると...</h4>
-                        <div class="tree-example">
-                            <div class="main-branch">
-                                <p><strong>main（木の幹）</strong></p>
-                                <ul>
-                                    <li>プロジェクトの中心となる部分</li>
-                                    <li>動作が保証された完成形のコード</li>
-                                    <li>本番環境で使用されるコード</li>
-                                </ul>
+                                                <!-- Curry Analogy for Pull Request -->
+                            <div class="curry-analogy">
+                                <h4><i class="fas fa-utensils"></i> ブランチ作成を「カレー作り」でたとえると…</h4>
+                                <div class="curry-comparison">
+                                    <div class="main-curry">
+                                        <div class="curry-header">
+                                            <i class="fas fa-pot-food"></i>
+                                            <h5>main（みんなで食べるカレー鍋）</h5>
+                                        </div>
+                                        <ul>
+                                            <li>みんなで食べる「完成品」</li>
+                                            <li>味や安全性が保証されている</li>
+                                            <li>勝手に調味料を入れると全員に影響</li>
+                                        </ul>
+                                    </div>
+                                    <div class="branch-curry">
+                                        <div class="curry-header">
+                                            <i class="fas fa-user"></i>
+                                            <h5>作業用ブランチ（自分の小鍋）</h5>
+                                        </div>
+                                        <ul>
+                                            <li>自分だけの鍋で新しい具材や味付けを試す</li>
+                                            <li>失敗してもみんなの鍋には影響しない</li>
+                                            <li>うまくできたら「みんなの鍋」に提案</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="examples-box">
+                                    <h5>プルリクエストは「味見してもらう」イメージ</h5>
+                                    <div class="example-row">
+                                        <div class="example">
+                                            <b>1. 小鍋で新しい具材を試す</b><br>
+                                            → 新機能や修正を自分のブランチで実装
+                                        </div>
+                                        <div class="example">
+                                            <b>2. みんなに「味見」を依頼</b><br>
+                                            → プルリクエストでレビューを依頼
+                                        </div>
+                                        <div class="example">
+                                            <b>3. OKなら本鍋に合流！</b><br>
+                                            → mainブランチにマージ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="curry-point">
+                                    <h5><i class="fas fa-lightbulb"></i> ポイント</h5>
+                                    <ul>
+                                        <li>いきなり本鍋（main）に具材を入れない</li>
+                                        <li>まずは自分の鍋（ブランチ）で試す</li>
+                                        <li>みんなで味見（レビュー）してから合流（マージ）</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="feature-branches">
-                                <p><strong>feature branches（枝）</strong></p>
-                                <ul>
-                                    <li>新機能開発用の作業スペース</li>
-                                    <li>バグ修正用の作業場所</li>
-                                    <li>実験的な変更を試す場所</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="protection-section">
     <div class="warning-box">
@@ -602,7 +684,7 @@ fix #3<br>
                         </div>
                     </div>
 
-                                       <div class="info-box">
+                                        <div class="info-box">
                                             <h3><i class="fas fa-file-code"></i> .gitignoreについて</h3>
                                             <p>Pull Requestを作成する前に、不要なファイルが含まれていないか確認しましょう。GitHubにプッシュ（PullRequest）を実行すると、全世界の人がその内容を確認できるようになります。そのため機密情報が含まれるファイルや、不要なファイルを公開しないように設定するファイルが.gitignoreです。</p>
 
