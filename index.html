@@ -698,80 +698,17 @@
                 <h2><i class="fas fa-code-merge"></i> Mergeとは</h2>
                 <div class="content-box">
                     <h3>Mergeの定義</h3>
-                    <p>Mergeは、ブランチ（開発の枝分かれ）を合流させることです。PRで提案した変更をメイン（実際のプロジェクト）のコードに組み込む作業です。</p>
+                    <p>Merge（マージ）とは、ブランチで行った変更をメインのコードに取り込む作業のことです。別々に進めていた作業を、本番用のコードに安全にまとめるために使われます。Pull Requestで提案された内容が承認された後、その変更を正式に組み込む最後のステップがMergeです。</p>
                     
-                    <h3>使用時の注意点</h3>
-                    <div class="warning-box">
-                        <h4><i class="fas fa-exclamation-triangle"></i> 競合（コンフリクト）とは</h4>
-                        <div class="conflict-explanation">
-                            <p class="conflict-intro">複数の人が同じファイルの同じ場所を別々に変更した時に発生する問題です。</p>
-                            
-                            <div class="conflict-example">
-                                <h5><i class="fas fa-code"></i> 具体例：</h5>
-                                <div class="">
-                                    <pre><code style="background-color: #f6f8fa;"><span class="main-code">// mainブランチの元のコード
-const buttonColor = "green";</span>
-
-<span class="comment">// AさんとBさんが同時に変更を加えた場合...</span>
-<span class="conflict-marker">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
-<span class="branch-a">const buttonColor = "red";    // Aさんの変更</span>
-<span class="conflict-marker">=======</span>
-<span class="branch-b">const buttonColor = "blue";   // Bさんの変更</span>
-<span class="conflict-marker">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/change-color</span></code></pre>
-                                </div>
-                            </div>
-
-                            <div class="resolution-steps">
-                                <h5><i class="fas fa-sync"></i> 1. 最新のmainブランチを取得</h5>
-                                <div class="code-example">
-                                    <pre><code># mainブランチに移動して最新化 <br>
-git checkout main <br>
-git pull origin main <br>
-
-# 作業ブランチに戻る <br>
-git checkout fix-issue-1 <br>
-
-# mainの内容を作業ブランチに取り込む <br>
-git merge main</code></pre>
-                                </div>
-
-                                <h5><i class="fas fa-edit"></i> 2. コンフリクトの解決</h5>
-                                <p>VSCodeのマージエディタを使用して解決します：</p>
-                                <ul>
-                                    <li>赤色の部分: 現在のブランチの内容（あなたの変更）</li>
-                                    <li>緑色の部分: 取り込もうとしている内容（mainブランチの変更）</li>
-                                    <li>「Accept Current」「Accept Incoming」「Accept Both」から適切な方を選択</li>
-                                </ul>
-
-                                <h5><i class="fas fa-check-circle"></i> 3. 変更の反映</h5>
-                                <div class="code-example">
-                                    <pre><code># 解決した変更を反映 <br>
-git add . <br>
-git commit -m "Resolve merge conflicts with main branch" <br>
-git push origin fix-issue-1</code></pre> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <h3>コードレビューの重要性</h3>
                     <div class="review-box">
-                        <h4><i class="fas fa-eye"></i> レビューとは</h4>
-                        <p>他のメンバーからPull Requestで提出されたコードをチェックし、問題点や改善点を指摘する作業です。チーム開発を行う際はMergeする（本番環境に落とし込む）前に、本当にPushしてもいいかの確認を行います。その際にこの機能が使えます。</p>
+                        <h4><i class="fas fa-eye"></i> レビュー作業について</h4>
+                        <p>他のメンバーからPull Requestで提出されたコードをチェックし、問題点や改善点を指摘する作業です。チーム開発を行う際はMergeする（本番環境に落とし込む）前に、本当にPushしてもいいかの確認を行います。そのタイミングでチームでのやり取りにこの機能が使えます。</p>
                         
                         <div class="review-points">
                             <div class="review-section">
                                 <h4><i class="fas fa-code-review"></i> コードレビュー</h4>
                                 <p>チームメンバーのコードをチェックし、品質を保つための作業です。</p>
-
-                                <div class="review-checklist">
-                                    <h5>主なチェックポイント：</h5>
-                                    <ul>
-                                        <li><i class="fas fa-check"></i> バグの有無</li>
-                                        <li><i class="fas fa-check"></i> コーディング規約との整合性</li>
-                                        <li><i class="fas fa-check"></i> セキュリティ上の問題</li>
-                                    </ul>
-                                </div>
                             </div>
 
                             <div class="review-workflow">
@@ -799,7 +736,7 @@ git push origin fix-issue-1</code></pre>
                                     <div class="tip-item">
                                         <h6>レビューする側</h6>
                                         <ul>
-                                            <li>建設的なフィードバック</li>
+                                            <li>積極的にフィードバック</li>
                                             <li>具体的な改善案の提示</li>
                                             <li>タイムリーな対応</li>
                                         </ul>
@@ -818,6 +755,129 @@ git push origin fix-issue-1</code></pre>
                                 <div class="good-comment">
                                     <p><i class="fas fa-check-circle"></i> 良い例：</p>
                                     <blockquote>"変数名をより具体的にすることで、コードの意図が明確になると思います。例: userInput → loginEmailInput"</blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <h3>Mergeするときの注意点</h3>
+                    <div class="warning-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> 競合（コンフリクト）とは</h4>
+                        <div class="conflict-explanation">
+                            <p class="conflict-intro">複数の人が同じファイルの同じ場所を別々に変更した時に発生する問題です。</p>
+                            
+                            <div class="conflict-example">
+                                <h5><i class="fas fa-code"></i> 具体例</h5>
+                                <div class="">
+                                    <pre><code style="background-color: #f6f8fa;"><span class="main-code">// mainブランチの元のコード
+const buttonColor = "green";</span>
+
+<span class="comment">// AさんとBさんが同時に変更を加えた場合...</span>
+<span class="conflict-marker">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
+<span class="branch-a">const buttonColor = "red";    // Aさんの変更</span>
+<span class="conflict-marker">=======</span>
+<span class="branch-b">const buttonColor = "blue";   // Bさんの変更</span>
+<span class="conflict-marker">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/change-color</span></code></pre>
+                                </div>
+                            </div>
+
+                            <div class="resolution-steps">
+                                <h5><i class="fas fa-exclamation-triangle"></i> コンフリクト発生時の対応</h5>
+                                <p>コンフリクトが発生すると、GitHub上でPull Requestページに「This branch has conflicts that must be resolved」と表示されます。</p>
+                                
+                                <div class="github-conflict-resolution">
+                                    <h5> 1. GitHub上での解決手順</h5>
+                                    <ol>
+                                        <li>
+                                            <strong>「Resolve conflicts」ボタンをクリック</strong>
+                                            <p>Pull Requestページに表示される「Resolve conflicts」ボタンをクリック <i class="fas fa-mouse-pointer"></i>します。</p>
+                                        </li>
+                                        <li>
+                                            <strong>コンフリクト箇所を確認</strong>
+                                            <p>GitHub上でコンフリクトしているファイルが表示されます</p>
+                                            <div class="conflict-display">
+                                                <pre><code style="background-color: #f6f8fa;"><span class="conflict-marker">&lt;&lt;&lt;&lt;&lt;&lt;&lt; feature/your-branch</span><br>
+<span class="branch-a">const buttonColor = "red";    // あなたの変更</span><br>
+<span class="conflict-marker">=======</span><br>
+<span class="branch-b">const buttonColor = "blue";   // mainブランチの変更</span><br>
+<span class="conflict-marker">&gt;&gt;&gt;&gt;&gt;&gt;&gt; main</span></code></pre>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>適切なコードを選択・編集</strong>
+                                            <p>コンフリクトマーカー（&lt;&lt;&lt;, ===, &gt;&gt;&gt;）を削除し、正しいコードを残します</p>
+                                            <div class="resolution-options">
+                                                <div class="option">
+                                                    <h6>あなたの変更を採用する場合</h6>
+                                                    <pre><code  style="background-color: #f6f8fa;">const buttonColor = "red";</code></pre>
+                                                </div>
+                                                <div class="option">
+                                                    <h6>mainブランチの変更を採用する場合</h6>
+                                                    <pre><code  style="background-color: #f6f8fa;">const buttonColor = "blue";</code></pre>
+                                                </div>
+                                                <div class="option">
+                                                    <h6>両方を組み合わせる場合</h6>
+                                                    <pre><code  style="background-color: #f6f8fa;">const buttonColor = "purple"; // 妥協案</code></pre>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>「Mark as resolved」をクリック</strong>
+                                            <p>すべてのコンフリクトを解決したら、ファイルごとに「Mark as resolved」ボタンをクリックします。</p>
+                                        </li>
+                                        <li>
+                                            <strong>「Commit merge」で完了</strong>
+                                            <p>すべてのファイルが解決されたら、「Commit merge」ボタンをクリックして解決を確定します。</p>
+                                        </li>
+                                    </ol>
+                                </div>
+
+                                <div class="alternative-method">
+                                    <h5><i class="fas fa-desktop"></i> 2. GitHub上で解決できない場合の対処法</h5>
+                                    <p>複雑なコンフリクトの場合は、ローカル環境で解決するようにしましょう。</p>
+                                    <ol>
+                                        <li>
+                                            <strong>最新のmainブランチを取得</strong>
+                                            <div class="code-example">
+                                                <pre><code># mainブランチに移動して最新化 <br>
+git checkout main <br>
+git pull origin main <br>
+<br>
+# 作業ブランチに戻る <br>
+git checkout fix-issue-1 <br>
+<br>
+# mainの内容を作業ブランチに取り込む <br>
+git merge main</code></pre>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>VSCodeでコンフリクトを解決</strong>
+                                            <ul>
+                                                <li>VSCodeが自動的にコンフリクトファイルを検出</li>
+                                                <li>「Accept Current Change」「Accept Incoming Change」「Accept Both Changes」から選択</li>
+                                                <li>手動で編集することも可能</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <strong>解決後にコミット・プッシュ</strong>
+                                            <div class="code-example">
+                                                <pre><code># 解決した変更を反映 <br>
+git add . <br>
+git commit -m "Resolve merge conflicts with main branch" <br>
+git push origin fix-issue-1</code></pre>
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+
+                                <div class="tip-box">
+                                    <h5><i class="fas fa-lightbulb"></i> コンフリクト予防のコツ</h5>
+                                    <ul>
+                                        <li>作業前にmainブランチから最新の状態でブランチを作成する</li>
+                                        <li>長期間の作業では定期的にmainブランチの変更を取り込む</li>
+                                        <li>チーム内で作業範囲を事前に調整する</li>
+                                        <li>小さな単位でPull Requestを作成する</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
